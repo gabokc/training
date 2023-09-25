@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: pg
+  name: pg
+spec:
+  serviceName: pg
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pg
+  template:
+    metadata:
+      labels:
+        app: pg
+    spec:
+      containers:
+        - image: postgres:11
+          name: pg
+          ports:
+          - containerPort: 5432       
+          volumeMounts:
+          - name: pg-volume
+            mountPath: /var/lib/postgresql/data
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  key: customer-app-dbname
+                  name: db-env
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: customer-app-username
+                  name: db-env
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: customer-app-pwd
+                  name: db-secrets
+      volumes:
+      - name: pg-volume
+        persistentVolumeClaim:
+          claimName: pg-engine-pvc

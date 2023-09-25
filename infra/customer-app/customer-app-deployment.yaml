@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-app
+  labels:
+    app: customer-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer-app
+  template:
+    metadata:
+      labels:
+        app: customer-app
+    spec:
+      containers:
+      - name: customer-app
+        image: gabrielmunerakc/customer-app:1.0
+        ports:
+        - containerPort: 9090
+        env:
+          - name: POSTGRES_DB
+            valueFrom:
+              configMapKeyRef:
+                key: customer-app-dbname
+                name: db-env
+          - name: POSTGRES_USER
+            valueFrom:
+              configMapKeyRef:
+                key: customer-app-username
+                name: db-env
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: customer-app-pwd
+                name: db-secrets      
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "200m" #200 millicpu (.2 cpu or 20% of the cpu)

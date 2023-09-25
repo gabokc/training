@@ -1,0 +1,35 @@
+# Kind guide
+# https://kind.sigs.k8s.io/docs/user/ingress/#ingress-nginx
+
+# Create a kind cluster with extraPortMappings and node-labels.
+# kind create cluster --config create-nginx-ingress-cluster.yaml
+# k cluster-info --context kind-training-cluster-1
+
+# Ingress NGINX, The manifests contains kind specific patches to forward 
+## the hostPorts to the ingress controller, set taint tolerations and schedule it to the custom labelled node.
+# k apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+
+# Now the Ingress is all setup. Wait until is ready to process requests running:
+# k wait --namespace ingress-nginx \
+  --for=condition=ready pod \
+  --selector=app.kubernetes.io/component=controller \
+  --timeout=90s
+
+# Create DB
+# k create -f db/pg-db.yaml
+
+# Create Deployment/pod
+# k create -f customer-app/customer-app-deployment.yaml
+
+# Create kubernetes' service
+# k create -f customer-app/customer-app-svc.yaml
+
+# Create Ingress object to route to these services.
+# k apply -f training-ingress.yaml
+
+# check it out
+# curl http://localhost/customer-app/actuator/health
+
+
+
+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
