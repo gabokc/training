@@ -15,8 +15,11 @@
   --selector=app.kubernetes.io/component=controller \
   --timeout=90s
 
+# Create ENV
+# k create -f db/env/
+
 # Create DB
-# k create -f db/pg-db.yaml
+# k create -f db/pg/
 
 # Create Deployment/pod
 # k create -f customer-app/customer-app-deployment.yaml
