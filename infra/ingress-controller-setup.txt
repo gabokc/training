@@ -1,6 +1,9 @@
 # Kind guide
 # https://kind.sigs.k8s.io/docs/user/ingress/#ingress-nginx
 
+# Debug guide
+# https://refactorfirst.com/how-to-remote-debug-java-application-on-kubernetes
+
 # Create a kind cluster with extraPortMappings and node-labels.
 # kind create cluster --config create-nginx-ingress-cluster.yaml
 # k cluster-info --context kind-training-cluster-1
@@ -16,7 +19,8 @@
   --timeout=90s
 
 # Create ENV
-# k create --save-config -f db/env/
+# k apply -f db/env/
+# k apply -f env-config-map.yaml
 
 # Create DB
 # k create --save-config -f db/pg/
@@ -32,3 +36,6 @@
 
 # check it out
 # curl http://localhost/customer-app/actuator/health
+
+# To debug
+# k port-forward deployment.apps/customer-app 5005:5005

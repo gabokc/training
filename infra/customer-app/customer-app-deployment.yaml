@@ -34,7 +34,7 @@ spec:
           initialDelaySeconds: 90
           periodSeconds: 30
           timeoutSeconds: 5
-          failureThreshold: 1          
+          failureThreshold: 2          
         env:
           - name: POSTGRES_DB
             valueFrom:
@@ -50,7 +50,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: customer-app-pwd
-                name: db-secrets      
+                name: db-secrets
+          - name: JAVA_TOOL_OPTIONS
+            valueFrom:
+              configMapKeyRef:
+                key: debug-params
+                name: env-vars     
         resources:
           limits:
             memory: "512Mi"
