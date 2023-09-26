@@ -16,19 +16,19 @@
   --timeout=90s
 
 # Create ENV
-# k create -f db/env/
+# k create --save-config -f db/env/
 
 # Create DB
-# k create -f db/pg/
+# k create --save-config -f db/pg/
 
-# Create Deployment/pod
-# k create -f customer-app/customer-app-deployment.yaml
+# Check DB
+# k exec -it pg-0 -- psql -d customer-app-db -U admin
 
-# Create kubernetes' service
-# k create -f customer-app/customer-app-svc.yaml
+# Create Deployment pod and service
+# k create --save-config -f customer-app/
 
 # Create Ingress object to route to these services.
-# k apply -f training-ingress.yaml
+# k create --save-config -f training-ingress.yaml
 
 # check it out
 # curl http://localhost/customer-app/actuator/health

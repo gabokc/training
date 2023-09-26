@@ -19,7 +19,21 @@ spec:
         - image: postgres:11
           name: pg
           ports:
-          - containerPort: 5432       
+          - containerPort: 5432
+          readinessProbe:
+            exec:
+              command: ["pg_isready" ,"-U" ,"$(POSTGRES_USER)", "-d" ,"$(POSTGRES_DB)"]
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 5
+            failureThreshold: 1
+          livenessProbe:
+            exec:
+              command: ["pg_isready" ,"-U" ,"$(POSTGRES_USER)", "-d" ,"$(POSTGRES_DB)"]
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 5
+            failureThreshold: 1                 
           volumeMounts:
           - name: pg-volume
             mountPath: /var/lib/postgresql/data
@@ -38,7 +52,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: customer-app-pwd
-                  name: db-secrets
+                  name: db-secrets        
       volumes:
       - name: pg-volume
         persistentVolumeClaim:
