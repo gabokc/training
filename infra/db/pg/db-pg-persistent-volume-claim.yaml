@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pg-engine-pvc
+  name: pg-pvc
 spec:
   storageClassName: standard
   accessModes:

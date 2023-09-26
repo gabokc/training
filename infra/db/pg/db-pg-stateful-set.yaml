@@ -42,4 +42,4 @@ spec:
       volumes:
       - name: pg-volume
         persistentVolumeClaim:
-          claimName: pg-engine-pvc
+          claimName: pg-pvc
