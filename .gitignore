@@ -1,6 +1,9 @@
 ### DB storage ###
 localstorage
 
+### mvn wrapper ###
+customer-app/.mvn/**
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

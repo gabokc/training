@@ -19,6 +19,22 @@ spec:
         image: gabrielmunerakc/customer-app:1.0
         ports:
         - containerPort: 9090
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 9090
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 9090
+          initialDelaySeconds: 90
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 1          
         env:
           - name: POSTGRES_DB
             valueFrom:
