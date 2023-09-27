@@ -11,4 +11,4 @@ RUN addgroup appgroup && adduser --ingroup appgroup --disabled-password --gecos 
 USER appuser
 COPY --from=builder /app/target/customer-app.jar customer-app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005","-jar","customer-app.jar"]
+ENTRYPOINT ["java","-jar","customer-app.jar"]

@@ -50,12 +50,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: customer-app-pwd
-                name: db-secrets
-          - name: JAVA_TOOL_OPTIONS
-            valueFrom:
-              configMapKeyRef:
-                key: debug-params
-                name: env-vars     
+                name: db-secrets     
         resources:
           limits:
             memory: "512Mi"
