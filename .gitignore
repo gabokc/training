@@ -1,5 +1,8 @@
 ### DB storage ###
-localstorage
+localstorage/**
+
+### DS Store ###
+**/.DS_Store
 
 ### mvn wrapper ###
 customer-app/.mvn/**
