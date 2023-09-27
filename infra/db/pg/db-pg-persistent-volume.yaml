@@ -3,12 +3,20 @@ kind: PersistentVolume
 metadata:
   name: pg-pv
 spec:
-  storageClassName: standard
+  storageClassName: pg-storage
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Retain
   capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
+  local:
     path: "/Users/gabriel.munera/Documents/KC/TrainingLab/localstorage/pg-db"
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+              - training-cluster-1-control-plane

@@ -16,3 +16,10 @@ nodes:
   - containerPort: 443
     hostPort: 443
     protocol: TCP
+  extraMounts:
+  - hostPath: /Users/gabriel.munera/Documents/KC/TrainingLab/localstorage/pg-db
+    containerPath: /Users/gabriel.munera/Documents/KC/TrainingLab/localstorage/pg-db
+    readOnly: false
+    selinuxRelabel: false
+    propagation: Bidirectional
+

@@ -18,6 +18,12 @@
   --selector=app.kubernetes.io/component=controller \
   --timeout=90s
 
+# Create storage folder within the cluster
+# docker ps 
+# grab the container id of training-cluster-1-control-plane
+# docker exec -it <container_id> sh 
+# mkdir -p /Users/gabriel.munera/Documents/KC/TrainingLab/localstorage/pg-db
+
 # Create ENV
 # k apply -f db/env/
 # k apply -f env-config-map.yaml
