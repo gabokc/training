@@ -41,7 +41,7 @@
 # k create --save-config -f training-ingress.yaml
 
 # check it out
-# curl http://localhost/customer-app/actuator/health
+# curl http://localhost/customer-app/actuator/health/readiness
 
 # To debug
 # k port-forward deployment.apps/customer-app 5005:5005
