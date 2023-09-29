@@ -1,0 +1,5 @@
+# https://dzone.com/articles/how-to-deploy-apache-kafka-with-kubernetes
+
+# To kill kcat process:
+## run ps -ax and grab the pid of the process
+## run kill -9 <pid>
