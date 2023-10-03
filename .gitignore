@@ -6,6 +6,7 @@ localstorage/**
 
 ### mvn wrapper ###
 customer-app/.mvn/**
+events-producer/.mvn/**
 
 HELP.md
 target/
