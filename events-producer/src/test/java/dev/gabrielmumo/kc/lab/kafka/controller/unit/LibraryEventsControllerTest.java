@@ -1,4 +1,4 @@
-package dev.gabrielmumo.kc.lab.kafka.controller;
+package dev.gabrielmumo.kc.lab.kafka.controller.unit;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package dev.gabrielmumo.kc.lab.kafka.controller;
+package dev.gabrielmumo.kc.lab.kafka.controller.integration;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
