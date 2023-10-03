@@ -32,9 +32,7 @@ public class LibraryEventsProducer {
         if (throwable != null) {
             handleFailure(throwable);
         } else {
-            var key = sendResult.getProducerRecord().key();
-            var value = sendResult.getProducerRecord().value();
-            handleSuccessful(sendResult)
+            handleSuccessful(sendResult);
         }
     }
 
