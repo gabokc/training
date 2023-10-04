@@ -12,8 +12,16 @@ public class TestUtil {
         return new Book(123, "Kafka Using Spring Boot","Dilip" );
     }
 
+    public static Book bookRecordWithInvalidValues(){
+        return new Book(null, "","Dilip" );
+    }
+
     public static LibraryEvent libraryEventRecord(){
         return new LibraryEvent(null, LibraryEventType.NEW, bookRecord());
+    }
+
+    public static LibraryEvent libraryEventRecordWithInvalidBook(){
+        return new LibraryEvent(null, LibraryEventType.NEW, bookRecordWithInvalidValues());
     }
 
     public static LibraryEvent parseLibraryEventRecord(ObjectMapper objectMapper , String json){

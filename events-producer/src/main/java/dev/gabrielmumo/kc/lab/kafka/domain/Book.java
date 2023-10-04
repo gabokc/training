@@ -1,4 +1,11 @@
 package dev.gabrielmumo.kc.lab.kafka.domain;
 
-public record Book(Integer bookId, String bookName, String bookAuthor) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record Book(
+        @NotNull Integer bookId,
+        @NotBlank String bookName,
+        @NotBlank String bookAuthor
+) {
 }
