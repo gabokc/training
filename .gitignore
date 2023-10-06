@@ -5,9 +5,10 @@ localstorage/**
 **/.DS_Store
 
 ### mvn wrapper ###
-customer-app/.mvn/**
-events-producer/.mvn/**
-events-consumer/.mvn/**
+#customer-app/.mvn/**
+#events-producer/.mvn/**
+#events-consumer/.mvn/**
+**/.mvn/**
 
 HELP.md
 target/
